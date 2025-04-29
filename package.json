@@ -12,7 +12,12 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "docker:build": "docker build -t vue-web-template .",
+    "docker:run": "docker run -p 8080:80 vue-web-template",
+    "docker:dev": "docker run -p 8080:80 -v $(pwd):/app vue-web-template",
+    "docker:stop": "docker stop $(docker ps -q --filter ancestor=vue-web-template)",
+    "docker:rm": "docker rm $(docker ps -aq --filter ancestor=vue-web-template)"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
